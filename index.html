@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>The Church of Her Holy Fluff</title>
+  <meta name="description" content="Satirical but earnest community celebrating kindness, naps, and the sacred power of fluff. Welcome to HolyFluff.org." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600..900&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0e0f14;          /* deep twilight */
+      --fg:#eef0f4;          /* near-white */
+      --muted:#9aa3af;       /* slate */
+      --brand:#b68cff;       /* velvet lavender */
+      --brand-2:#7fe6d9;     /* mint glow */
+      --accent:#ffd27f;      /* candle gold */
+      --card:#161823;        /* panel */
+      --ring:rgba(182,140,255,0.35);
+      --max:1100px;
+      --radius:18px;
+      --shadow:0 12px 30px rgba(0,0,0,0.28);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell; color:var(--fg);
+      background: radial-gradient(1200px 800px at 70% -10%, rgba(127,230,217,0.08), transparent),
+                  radial-gradient(900px 600px at -10% 10%, rgba(182,140,255,0.10), transparent),
+                  var(--bg);
+      line-height:1.6;
+    }
+    a{color:var(--brand); text-decoration:none}
+    a:hover{opacity:.9}
+
+    /* Layout */
+    .container{max-width:var(--max); margin:0 auto; padding:0 20px}
+    header{
+      position:sticky; top:0; z-index:50; backdrop-filter:blur(8px);
+      background:rgba(14,15,20,0.75); border-bottom:1px solid rgba(255,255,255,0.06);
+    }
+    .nav{display:flex; align-items:center; justify-content:space-between; padding:14px 0}
+    .brand{display:flex; gap:12px; align-items:center}
+    .brand svg{width:40px; height:40px}
+    .brand h1{font-family:"Playfair Display",serif; font-weight:800; letter-spacing:.3px; font-size:20px; margin:0}
+    .nav-links{display:flex; gap:18px; align-items:center}
+    .nav-links a{padding:10px 12px; border-radius:10px}
+    .nav-links a:hover{background:rgba(255,255,255,0.06)}
+    .cta{background:linear-gradient(90deg,var(--brand),var(--brand-2)); color:#0b0c10; font-weight:800; padding:10px 14px; border-radius:12px}
+
+    .menu-btn{display:none; background:none; border:none; color:var(--fg); font-size:26px}
+
+    /* Hero */
+    .hero{position:relative; padding:90px 0 70px; overflow:hidden}
+    .hero .orb{
+      position:absolute; inset:-120px auto auto -120px; width:360px; height:360px; border-radius:50%;
+      background:radial-gradient(circle at 35% 35%, rgba(182,140,255,0.45), rgba(182,140,255,0.05) 65%, transparent 70%);
+      filter: blur(8px);
+      pointer-events:none;
+    }
+    .hero .orb2{
+      position:absolute; right:-120px; top:-90px; width:420px; height:420px; border-radius:50%;
+      background:radial-gradient(circle at 60% 40%, rgba(127,230,217,0.43), rgba(127,230,217,0.05) 65%, transparent 70%);
+      filter: blur(10px);
+      pointer-events:none;
+    }
+    .hero h2{font-family:"Playfair Display",serif; font-size:48px; line-height:1.1; margin:0 0 14px}
+    .hero p{max-width:760px; color:var(--muted); font-size:18px; margin:0 0 24px}
+    .hero .actions{display:flex; gap:14px; flex-wrap:wrap}
+    .btn{display:inline-block; padding:12px 16px; border-radius:14px; font-weight:700}
+    .btn.primary{background:linear-gradient(90deg,var(--brand),var(--brand-2)); color:#0b0c10}
+    .btn.ghost{border:1px solid rgba(255,255,255,0.12)}
+
+    /* Sections */
+    section{padding:70px 0; border-top:1px solid rgba(255,255,255,0.06)}
+    h3.section-title{font-family:"Playfair Display",serif; font-size:32px; margin:0 0 12px}
+    p.section-sub{color:var(--muted); margin:0 0 26px}
+
+    .grid{display:grid; gap:18px}
+    .grid.cols-3{grid-template-columns:repeat(3,1fr)}
+    .grid.cols-2{grid-template-columns:repeat(2,1fr)}
+
+    .card{background:var(--card); border:1px solid rgba(255,255,255,0.06); border-radius:var(--radius); padding:18px; box-shadow:var(--shadow)}
+    .card h4{margin:0 0 8px; font-size:18px}
+    .badge{display:inline-block; padding:4px 10px; border-radius:999px; background:rgba(182,140,255,0.12); color:#d9c7ff; font-weight:700; font-size:12px; border:1px solid var(--ring)}
+
+    /* Shop mock */
+    .product{display:flex; gap:14px; align-items:flex-start}
+    .product img{width:90px; height:90px; border-radius:12px; object-fit:cover; border:1px solid rgba(255,255,255,0.08)}
+    .price{font-weight:800; color:var(--accent)}
+
+    /* Footer */
+    footer{padding:40px 0 70px; color:var(--muted)}
+
+    /* Responsive */
+    @media (max-width: 900px){
+      .grid.cols-3{grid-template-columns:1fr 1fr}
+    }
+    @media (max-width: 680px){
+      .nav-links{display:none}
+      .menu-btn{display:block}
+      .hero h2{font-size:38px}
+      .grid.cols-2,.grid.cols-3{grid-template-columns:1fr}
+    }
+    /* Simple reveal */
+    .reveal{opacity:0; transform:translateY(10px); transition:opacity .5s ease, transform .5s ease}
+    .reveal.in{opacity:1; transform:none}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <!-- Inline logo: Sacred Paw within halo -->
+        <svg viewBox="0 0 64 64" aria-hidden="true" role="img">
+          <defs>
+            <radialGradient id="g" cx="50%" cy="50%">
+              <stop offset="0%" stop-color="#b68cff"/>
+              <stop offset="70%" stop-color="#7fe6d9" stop-opacity="0.7"/>
+              <stop offset="100%" stop-color="#7fe6d9" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
+          <circle cx="32" cy="32" r="30" fill="url(#g)"/>
+          <circle cx="32" cy="32" r="22" fill="none" stroke="#d9c7ff" stroke-opacity=".6"/>
+          <!-- paw -->
+          <circle cx="32" cy="36" r="7" fill="#fff"/>
+          <circle cx="22" cy="28" r="4" fill="#fff"/>
+          <circle cx="42" cy="28" r="4" fill="#fff"/>
+          <circle cx="28" cy="24" r="3.2" fill="#fff"/>
+          <circle cx="36" cy="24" r="3.2" fill="#fff"/>
+        </svg>
+        <h1>The Church of Her Holy Fluff</h1>
+      </div>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#about">About</a>
+        <a href="#tenets">Beliefs</a>
+        <a href="#holy-days">Holy Days</a>
+        <a href="#join">Join</a>
+        <a href="#sermons">Sermons</a>
+        <a href="#shop" class="cta">Shop</a>
+      </nav>
+      <button class="menu-btn" aria-label="Toggle menu" onclick="toggleMenu()">☰</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="orb"></div><div class="orb2"></div>
+      <div class="container">
+        <h2>Satirical... earnest... fluffy.</h2>
+        <p>
+          We are a kind and ridiculous community dedicated to small joys, soft paws, and better humans. The Velvet Testament calls us to practice compassion, share snacks, and honor the sacred nap. Bring your curiosity... leave your cruelty at the door.
+        </p>
+        <div class="actions">
+          <a class="btn primary" href="#join">Get Ordained</a>
+          <a class="btn ghost" href="#shop">Browse Relics</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="reveal">
+      <div class="container">
+        <h3 class="section-title">About the Church</h3>
+        <p class="section-sub">A playful experiment in community... taking kindness seriously while we laugh at ourselves.</p>
+        <div class="grid cols-3">
+          <div class="card">
+            <span class="badge">Mission</span>
+            <h4>Delight... then do good</h4>
+            <p>We use humor to lower defenses and open space for empathy, mutual aid, and practical help. Satire is the hook... care is the point.</p>
+          </div>
+          <div class="card">
+            <span class="badge">Scripture</span>
+            <h4>The Velvet Testament</h4>
+            <p>Short parables, absurd commandments, and rituals that translate to simple acts: feed people... call your friends... nap without guilt.</p>
+          </div>
+          <div class="card">
+            <span class="badge">Practice</span>
+            <h4>Micro‑rituals</h4>
+            <p>Weekly kindness challenges, 3‑minute meditations, and the Rite of the Warm Beverage. Reverent silliness encouraged.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="tenets" class="reveal">
+      <div class="container">
+        <h3 class="section-title">Core Beliefs</h3>
+        <p class="section-sub">Not carved in stone... more like stitched on a comfy blanket.</p>
+        <div class="grid cols-2">
+          <div class="card">
+            <h4>1) Kindness beats cleverness</h4>
+            <p>We prize being good over being right. Wit is welcome... cruelty is not.</p>
+          </div>
+          <div class="card">
+            <h4>2) Rest is righteous</h4>
+            <p>We honor naps, sabbaths, and the refusal to grind ourselves into dust.</p>
+          </div>
+          <div class="card">
+            <h4>3) Share the snacks</h4>
+            <p>Feasts are better when everyone eats. We run periodic food bank drives and “pantry tithe” weeks.</p>
+          </div>
+          <div class="card">
+            <h4>4) Curiosity over certainty</h4>
+            <p>Ask better questions... hold fewer grudges. Dogma is banned for being boring.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="holy-days" class="reveal">
+      <div class="container">
+        <h3 class="section-title">Holy Days</h3>
+        <p class="section-sub">Recurring festivals that conveniently align with merch drops.</p>
+        <div class="grid cols-3">
+          <div class="card">
+            <h4>Feast of Perpetual Purring</h4>
+            <p>Celebration of cozy companionship. Tradition... offer one act of service to someone who needs warmth.</p>
+          </div>
+          <div class="card">
+            <h4>Day of the Eternal Nap</h4>
+            <p>Choose rest on purpose. Phones off... blankets on... zero guilt.</p>
+          </div>
+          <div class="card">
+            <h4>Festival of Found Snacks</h4>
+            <p>Community potluck with surprise ingredients. Share recipes... and leftovers with neighbors.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="join" class="reveal">
+      <div class="container">
+        <h3 class="section-title">Join the Congregation</h3>
+        <p class="section-sub">Choose your path... instant ordination or slow‑burn membership. Both come with kindness homework.</p>
+        <div class="grid cols-2">
+          <div class="card">
+            <span class="badge">Ordination</span>
+            <h4>Minister of Fluff (instant)</h4>
+            <p>Get a printable certificate and a short rite you can perform for friends and pets. Suggested donation $10.</p>
+            <button class="btn primary" onclick="fakeCheckout('Ordination Certificate',10)">Get Ordained</button>
+          </div>
+          <div class="card">
+            <span class="badge">Membership</span>
+            <h4>High Fluff Council</h4>
+            <p>Monthly digital relics, early access to drops, and a private discord channel. $10/month... cancel anytime.</p>
+            <button class="btn ghost" onclick="fakeCheckout('Council Membership (Monthly)',10)">Join Council</button>
+          </div>
+        </div>
+        <div class="card" style="margin-top:18px">
+          <h4>Newsletter</h4>
+          <p class="section-sub">Announcements, micro‑rituals, and mildly unhinged theology. Zero spam.</p>
+          <form onsubmit="return subscribe(event)" aria-label="Newsletter form">
+            <label for="email">Email</label><br />
+            <input id="email" name="email" type="email" required placeholder="you@example.com" style="width:100%; max-width:420px; margin:8px 0; padding:12px; border-radius:12px; border:1px solid rgba(255,255,255,0.14); background:#0f1118; color:var(--fg)" />
+            <button class="btn primary" type="submit">Subscribe</button>
+            <small style="margin-left:10px; color:var(--muted)">We only email for good reasons.</small>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section id="sermons" class="reveal">
+      <div class="container">
+        <h3 class="section-title">Sermons & Readings</h3>
+        <p class="section-sub">From the Velvet Testament and the collected ramblings of the Fluffkeeper.</p>
+        <div class="grid cols-3">
+          <article class="card">
+            <h4>The Rite of the Warm Beverage</h4>
+            <p>Three minutes to breathe, sip, and notice the tiny ways you are safe. Liturgical mug optional.</p>
+            <a href="#" aria-label="Read more Rite of the Warm Beverage">Read more</a>
+          </article>
+          <article class="card">
+            <h4>On the Ethics of Snacks</h4>
+            <p>Sharing food as sacred practice. First rule... take less than half. Second rule... bring something next time.</p>
+            <a href="#">Read more</a>
+          </article>
+          <article class="card">
+            <h4>Against Cruelty... For Mischief</h4>
+            <p>We reject meanness and embrace playful subversion. The world needs fewer edgelords and more gentle tricksters.</p>
+            <a href="#">Read more</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="shop" class="reveal">
+      <div class="container">
+        <h3 class="section-title">Relics & Vestments</h3>
+        <p class="section-sub">Print‑on‑demand ready. Hook these buttons to Shopify, Etsy, or Printful when you’re ready.</p>
+        <div class="grid cols-3">
+          <div class="card product">
+            <img alt="Velvet Testament zine cover" src="data:image/svg+xml;utf8,<?xml version='1.0' encoding='UTF-8'?><svg xmlns='http://www.w3.org/2000/svg' width='300' height='300'><rect width='100%' height='100%' fill='%23161823'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='white' font-family='Georgia' font-size='22'>Velvet Testament</text></svg>" />
+            <div>
+              <h4>Velvet Testament (Zine)</h4>
+              <p>24 pages of sacred nonsense and practical kindness. PDF or saddle‑stitched print.</p>
+              <div class="price">$9 / $14</div>
+              <button class="btn primary" onclick="fakeCheckout('Velvet Testament Zine',9)">Add to Cart</button>
+            </div>
+          </div>
+          <div class="card product">
+            <img alt="Minister certificate" src="data:image/svg+xml;utf8,<?xml version='1.0' encoding='UTF-8'?><svg xmlns='http://www.w3.org/2000/svg' width='300' height='300'><rect width='100%' height='100%' fill='%23161823'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='white' font-family='Georgia' font-size='20'>Ordination Certificate</text></svg>" />
+            <div>
+              <h4>Ordination Certificate</h4>
+              <p>Instant printable. Includes the Rite of Blessing Small Creatures and Warm Machines.</p>
+              <div class="price">$10</div>
+              <button class="btn primary" onclick="fakeCheckout('Ordination Certificate',10)">Add to Cart</button>
+            </div>
+          </div>
+          <div class="card product">
+            <img alt="Sacred Paw hoodie" src="data:image/svg+xml;utf8,<?xml version='1.0' encoding='UTF-8'?><svg xmlns='http://www.w3.org/2000/svg' width='300' height='300'><rect width='100%' height='100%' fill='%23161823'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='white' font-family='Georgia' font-size='22'>Sacred Paw Hoodie</text></svg>" />
+            <div>
+              <h4>Hoodie of the Sacred Paw</h4>
+              <p>Cozy armor for modern pilgrims. Print‑on‑demand in multiple colors and sizes.</p>
+              <div class="price">$49</div>
+              <button class="btn primary" onclick="fakeCheckout('Sacred Paw Hoodie',49)">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+        <div class="card" style="margin-top:18px">
+          <h4>Want a full shop?</h4>
+          <p>Point these buttons at a real cart by wiring <code>fakeCheckout()</code> to your e‑commerce provider... or embed your Etsy/Shopify widget here.</p>
+          <pre style="white-space:pre-wrap; background:#0f1118; border-radius:12px; padding:12px; border:1px solid rgba(255,255,255,0.08)">
+// Replace fakeCheckout with a real redirect
+function checkout(item, price){
+  window.location.href = "https://yourshop.com/checkout?sku=" + encodeURIComponent(item);
+}
+          </pre>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq" class="reveal">
+      <div class="container">
+        <h3 class="section-title">FAQ</h3>
+        <div class="grid cols-2">
+          <div class="card">
+            <h4>Is this a joke?</h4>
+            <p>Yes... and no. We’re joking with the trappings... not with the values. We take kindness seriously.</p>
+          </div>
+          <div class="card">
+            <h4>Do I need to believe anything?</h4>
+            <p>Believe in naps, snacks, and people. Debate theology if you want... just don’t be a jerk.</p>
+          </div>
+          <div class="card">
+            <h4>Where does money go?</h4>
+            <p>Hosting, print costs, and a monthly mutual‑aid fund posted publicly. When there’s profit... we share it.</p>
+          </div>
+          <div class="card">
+            <h4>Can I start a local chapter?</h4>
+            <p>Yes. Gather three friends, pick a coffee shop, and do one tangible good thing per month. Send photos.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="reveal">
+    <div class="container">
+      <div class="grid cols-3">
+        <div>
+          <strong>The Church of Her Holy Fluff</strong>
+          <p style="margin-top:8px">HolyFluff.org • A benevolent satire... a real community.</p>
+        </div>
+        <div>
+          <strong>Contact</strong>
+          <p>Email: <a href="mailto:abbess@holyfluff.org">abbess@holyfluff.org</a></p>
+          <p>Press: <a href="mailto:press@holyfluff.org">press@holyfluff.org</a></p>
+        </div>
+        <div>
+          <strong>Social</strong>
+          <p><a href="#">Instagram</a> • <a href="#">TikTok</a> • <a href="#">Discord</a></p>
+        </div>
+      </div>
+      <p style="margin-top:20px">© <span id="year"></span> The Church of Her Holy Fluff. All naps reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+    function toggleMenu(){
+      const links = document.querySelector('.nav-links');
+      if(!links) return;
+      const showing = getComputedStyle(links).display !== 'none';
+      links.style.display = showing ? 'none' : 'flex';
+    }
+    // Fake checkout to keep this single-file
+    function fakeCheckout(item, price){
+      alert('Pretend we added to cart: ' + item + ' ($' + price + ')');
+    }
+    // Newsletter subscribe
+    function subscribe(e){
+      e.preventDefault();
+      const email = document.getElementById('email').value.trim();
+      if(!email){ alert('Please enter an email.'); return false; }
+      // For now... use mailto. Replace with your provider later.
+      window.location.href = 'mailto:news@holyfluff.org?subject=' + encodeURIComponent('Subscribe') + '&body=' + encodeURIComponent('Please subscribe ' + email + ' to the newsletter.');
+      return false;
+    }
+    // Scroll reveal
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} })
+    },{threshold:0.08});
+    document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
