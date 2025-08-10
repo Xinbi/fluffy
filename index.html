@@ -8,105 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600..900&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-  <style>
-    :root{
-      --bg:#0e0f14;          /* deep twilight */
-      --fg:#eef0f4;          /* near-white */
-      --muted:#9aa3af;       /* slate */
-      --brand:#b68cff;       /* velvet lavender */
-      --brand-2:#7fe6d9;     /* mint glow */
-      --accent:#ffd27f;      /* candle gold */
-      --card:#161823;        /* panel */
-      --ring:rgba(182,140,255,0.35);
-      --max:1100px;
-      --radius:18px;
-      --shadow:0 12px 30px rgba(0,0,0,0.28);
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell; color:var(--fg);
-      background: radial-gradient(1200px 800px at 70% -10%, rgba(127,230,217,0.08), transparent),
-                  radial-gradient(900px 600px at -10% 10%, rgba(182,140,255,0.10), transparent),
-                  var(--bg);
-      line-height:1.6;
-    }
-    a{color:var(--brand); text-decoration:none}
-    a:hover{opacity:.9}
-
-    /* Layout */
-    .container{max-width:var(--max); margin:0 auto; padding:0 20px}
-    header{
-      position:sticky; top:0; z-index:50; backdrop-filter:blur(8px);
-      background:rgba(14,15,20,0.75); border-bottom:1px solid rgba(255,255,255,0.06);
-    }
-    .nav{display:flex; align-items:center; justify-content:space-between; padding:14px 0}
-    .brand{display:flex; gap:12px; align-items:center}
-    .brand svg{width:40px; height:40px}
-    .brand h1{font-family:"Playfair Display",serif; font-weight:800; letter-spacing:.3px; font-size:20px; margin:0}
-    .nav-links{display:flex; gap:18px; align-items:center}
-    .nav-links a{padding:10px 12px; border-radius:10px}
-    .nav-links a:hover{background:rgba(255,255,255,0.06)}
-    .cta{background:linear-gradient(90deg,var(--brand),var(--brand-2)); color:#0b0c10; font-weight:800; padding:10px 14px; border-radius:12px}
-
-    .menu-btn{display:none; background:none; border:none; color:var(--fg); font-size:26px}
-
-    /* Hero */
-    .hero{position:relative; padding:90px 0 70px; overflow:hidden}
-    .hero .orb{
-      position:absolute; inset:-120px auto auto -120px; width:360px; height:360px; border-radius:50%;
-      background:radial-gradient(circle at 35% 35%, rgba(182,140,255,0.45), rgba(182,140,255,0.05) 65%, transparent 70%);
-      filter: blur(8px);
-      pointer-events:none;
-    }
-    .hero .orb2{
-      position:absolute; right:-120px; top:-90px; width:420px; height:420px; border-radius:50%;
-      background:radial-gradient(circle at 60% 40%, rgba(127,230,217,0.43), rgba(127,230,217,0.05) 65%, transparent 70%);
-      filter: blur(10px);
-      pointer-events:none;
-    }
-    .hero h2{font-family:"Playfair Display",serif; font-size:48px; line-height:1.1; margin:0 0 14px}
-    .hero p{max-width:760px; color:var(--muted); font-size:18px; margin:0 0 24px}
-    .hero .actions{display:flex; gap:14px; flex-wrap:wrap}
-    .btn{display:inline-block; padding:12px 16px; border-radius:14px; font-weight:700}
-    .btn.primary{background:linear-gradient(90deg,var(--brand),var(--brand-2)); color:#0b0c10}
-    .btn.ghost{border:1px solid rgba(255,255,255,0.12)}
-
-    /* Sections */
-    section{padding:70px 0; border-top:1px solid rgba(255,255,255,0.06)}
-    h3.section-title{font-family:"Playfair Display",serif; font-size:32px; margin:0 0 12px}
-    p.section-sub{color:var(--muted); margin:0 0 26px}
-
-    .grid{display:grid; gap:18px}
-    .grid.cols-3{grid-template-columns:repeat(3,1fr)}
-    .grid.cols-2{grid-template-columns:repeat(2,1fr)}
-
-    .card{background:var(--card); border:1px solid rgba(255,255,255,0.06); border-radius:var(--radius); padding:18px; box-shadow:var(--shadow)}
-    .card h4{margin:0 0 8px; font-size:18px}
-    .badge{display:inline-block; padding:4px 10px; border-radius:999px; background:rgba(182,140,255,0.12); color:#d9c7ff; font-weight:700; font-size:12px; border:1px solid var(--ring)}
-
-    /* Shop mock */
-    .product{display:flex; gap:14px; align-items:flex-start}
-    .product img{width:90px; height:90px; border-radius:12px; object-fit:cover; border:1px solid rgba(255,255,255,0.08)}
-    .price{font-weight:800; color:var(--accent)}
-
-    /* Footer */
-    footer{padding:40px 0 70px; color:var(--muted)}
-
-    /* Responsive */
-    @media (max-width: 900px){
-      .grid.cols-3{grid-template-columns:1fr 1fr}
-    }
-    @media (max-width: 680px){
-      .nav-links{display:none}
-      .menu-btn{display:block}
-      .hero h2{font-size:38px}
-      .grid.cols-2,.grid.cols-3{grid-template-columns:1fr}
-    }
-    /* Simple reveal */
-    .reveal{opacity:0; transform:translateY(10px); transition:opacity .5s ease, transform .5s ease}
-    .reveal.in{opacity:1; transform:none}
-  </style>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <header>
@@ -115,20 +17,26 @@
         <!-- Inline logo: Sacred Paw within halo -->
         <svg viewBox="0 0 64 64" aria-hidden="true" role="img">
           <defs>
+            <!-- gold/silver halo -->
             <radialGradient id="g" cx="50%" cy="50%">
-              <stop offset="0%" stop-color="#b68cff"/>
-              <stop offset="70%" stop-color="#7fe6d9" stop-opacity="0.7"/>
-              <stop offset="100%" stop-color="#7fe6d9" stop-opacity="0"/>
+              <stop offset="0%" stop-color="#d4af37"/>
+              <stop offset="70%" stop-color="#c0c0c0" stop-opacity="0.65"/>
+              <stop offset="100%" stop-color="#c0c0c0" stop-opacity="0"/>
             </radialGradient>
           </defs>
           <circle cx="32" cy="32" r="30" fill="url(#g)"/>
-          <circle cx="32" cy="32" r="22" fill="none" stroke="#d9c7ff" stroke-opacity=".6"/>
-          <!-- paw -->
-          <circle cx="32" cy="36" r="7" fill="#fff"/>
-          <circle cx="22" cy="28" r="4" fill="#fff"/>
-          <circle cx="42" cy="28" r="4" fill="#fff"/>
-          <circle cx="28" cy="24" r="3.2" fill="#fff"/>
-          <circle cx="36" cy="24" r="3.2" fill="#fff"/>
+          <circle cx="32" cy="32" r="22" fill="none" stroke="#d4af37" stroke-opacity=".6"/>
+          
+		  <g fill="#000">
+            <!-- Cross -->
+            <rect x="28" y="20" width="8" height="28"/>
+            <rect x="20" y="32" width="24" height="8"/>
+            <!-- Bunny head -->
+            <circle cx="32" cy="16" r="6"/>
+            <!-- Ears -->
+            <ellipse cx="26" cy="6" rx="3" ry="8"/>
+            <ellipse cx="38" cy="6" rx="3" ry="8"/>
+          </g>
         </svg>
         <h1>The Church of Her Holy Fluff</h1>
       </div>
@@ -148,10 +56,12 @@
     <section class="hero">
       <div class="orb"></div><div class="orb2"></div>
       <div class="container">
-        <h2>Satirical... earnest... fluffy.</h2>
-        <p>
-          We are a kind and ridiculous community dedicated to small joys, soft paws, and better humans. The Velvet Testament calls us to practice compassion, share snacks, and honor the sacred nap. Bring your curiosity... leave your cruelty at the door.
-        </p>
+		<h2>In Service to the Fluffy Spirit</h2>
+		<p>
+		  We are a fellowship devoted to the gentle power of joy, the comfort of soft paws, and the art of becoming better humans. 
+		  The Velvet Testament calls us to weave compassion into the fabric of daily life, to share our blessings, and to honor the sacred rest. 
+		  All who seek warmth, kindness, and a place in the great tapestry are welcome here.  Halle-hop!
+		</p>
         <div class="actions">
           <a class="btn primary" href="#join">Get Ordained</a>
           <a class="btn ghost" href="#shop">Browse Relics</a>
@@ -176,8 +86,8 @@
           </div>
           <div class="card">
             <span class="badge">Practice</span>
-            <h4>Micro‑rituals</h4>
-            <p>Weekly kindness challenges, 3‑minute meditations, and the Rite of the Warm Beverage. Reverent silliness encouraged.</p>
+            <h4>Micro-rituals</h4>
+            <p>Weekly kindness challenges, 3-minute meditations, and the Rite of the Warm Beverage. Reverent silliness encouraged.</p>
           </div>
         </div>
       </div>
@@ -252,9 +162,9 @@
           <p class="section-sub">Announcements, micro‑rituals, and mildly unhinged theology. Zero spam.</p>
           <form onsubmit="return subscribe(event)" aria-label="Newsletter form">
             <label for="email">Email</label><br />
-            <input id="email" name="email" type="email" required placeholder="you@example.com" style="width:100%; max-width:420px; margin:8px 0; padding:12px; border-radius:12px; border:1px solid rgba(255,255,255,0.14); background:#0f1118; color:var(--fg)" />
+            <input id="email" name="email" type="email" required placeholder="you@example.com" class="input" />
             <button class="btn primary" type="submit">Subscribe</button>
-            <small style="margin-left:10px; color:var(--muted)">We only email for good reasons.</small>
+            <small class="muted">We only email for good reasons.</small>
           </form>
         </div>
       </div>
@@ -290,7 +200,7 @@
         <p class="section-sub">Print‑on‑demand ready. Hook these buttons to Shopify, Etsy, or Printful when you’re ready.</p>
         <div class="grid cols-3">
           <div class="card product">
-            <img alt="Velvet Testament zine cover" src="data:image/svg+xml;utf8,<?xml version='1.0' encoding='UTF-8'?><svg xmlns='http://www.w3.org/2000/svg' width='300' height='300'><rect width='100%' height='100%' fill='%23161823'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='white' font-family='Georgia' font-size='22'>Velvet Testament</text></svg>" />
+            <img alt="Velvet Testament zine cover" src="data:image/svg+xml;utf8,<?xml version='1.0' encoding='UTF-8'?><svg xmlns='http://www.w3.org/2000/svg' width='300' height='300'><rect width='100%' height='100%' fill='%23ffffff'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='black' font-family='Georgia' font-size='22'>Velvet Testament</text></svg>" />
             <div>
               <h4>Velvet Testament (Zine)</h4>
               <p>24 pages of sacred nonsense and practical kindness. PDF or saddle‑stitched print.</p>
@@ -299,7 +209,7 @@
             </div>
           </div>
           <div class="card product">
-            <img alt="Minister certificate" src="data:image/svg+xml;utf8,<?xml version='1.0' encoding='UTF-8'?><svg xmlns='http://www.w3.org/2000/svg' width='300' height='300'><rect width='100%' height='100%' fill='%23161823'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='white' font-family='Georgia' font-size='20'>Ordination Certificate</text></svg>" />
+            <img alt="Minister certificate" src="data:image/svg+xml;utf8,<?xml version='1.0' encoding='UTF-8'?><svg xmlns='http://www.w3.org/2000/svg' width='300' height='300'><rect width='100%' height='100%' fill='%23ffffff'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='black' font-family='Georgia' font-size='20'>Ordination Certificate</text></svg>" />
             <div>
               <h4>Ordination Certificate</h4>
               <p>Instant printable. Includes the Rite of Blessing Small Creatures and Warm Machines.</p>
@@ -308,7 +218,7 @@
             </div>
           </div>
           <div class="card product">
-            <img alt="Sacred Paw hoodie" src="data:image/svg+xml;utf8,<?xml version='1.0' encoding='UTF-8'?><svg xmlns='http://www.w3.org/2000/svg' width='300' height='300'><rect width='100%' height='100%' fill='%23161823'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='white' font-family='Georgia' font-size='22'>Sacred Paw Hoodie</text></svg>" />
+            <img alt="Sacred Paw hoodie" src="data:image/svg+xml;utf8,<?xml version='1.0' encoding='UTF-8'?><svg xmlns='http://www.w3.org/2000/svg' width='300' height='300'><rect width='100%' height='100%' fill='%23ffffff'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='black' font-family='Georgia' font-size='22'>Sacred Paw Hoodie</text></svg>" />
             <div>
               <h4>Hoodie of the Sacred Paw</h4>
               <p>Cozy armor for modern pilgrims. Print‑on‑demand in multiple colors and sizes.</p>
@@ -320,7 +230,7 @@
         <div class="card" style="margin-top:18px">
           <h4>Want a full shop?</h4>
           <p>Point these buttons at a real cart by wiring <code>fakeCheckout()</code> to your e‑commerce provider... or embed your Etsy/Shopify widget here.</p>
-          <pre style="white-space:pre-wrap; background:#0f1118; border-radius:12px; padding:12px; border:1px solid rgba(255,255,255,0.08)">
+          <pre class="code">
 // Replace fakeCheckout with a real redirect
 function checkout(item, price){
   window.location.href = "https://yourshop.com/checkout?sku=" + encodeURIComponent(item);
@@ -360,7 +270,7 @@ function checkout(item, price){
       <div class="grid cols-3">
         <div>
           <strong>The Church of Her Holy Fluff</strong>
-          <p style="margin-top:8px">HolyFluff.org • A benevolent satire... a real community.</p>
+          <p class="footnote">HolyFluff.org • A benevolent satire... a real community.</p>
         </div>
         <div>
           <strong>Contact</strong>
@@ -372,7 +282,7 @@ function checkout(item, price){
           <p><a href="#">Instagram</a> • <a href="#">TikTok</a> • <a href="#">Discord</a></p>
         </div>
       </div>
-      <p style="margin-top:20px">© <span id="year"></span> The Church of Her Holy Fluff. All naps reserved.</p>
+      <p class="copy">© <span id="year"></span> The Church of Her Holy Fluff. All naps reserved.</p>
     </div>
   </footer>
 
