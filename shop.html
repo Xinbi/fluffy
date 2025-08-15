@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Shop | The Church of Her Holy Fluff</title>
+  <meta name="description" content="Learn about the Church of Her Holy Fluff — a playful experiment in community, taking kindness seriously while laughing at ourselves." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600..900&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Injected header -->
+  <div id="site-header"></div>
+  
+  <main>
+    <section id="shop" class="reveal in">
+      <div class="container">
+        <h3 class="section-title">Relics & Vestments</h3>
+        <p class="section-sub">Print‑on‑demand ready. Hook these buttons to Shopify, Etsy, or Printful when you’re ready.</p>
+        <div class="grid cols-3">
+          <div class="card product">
+            <img alt="Velvet Testament zine cover" src="data:image/svg+xml;utf8,<?xml version='1.0' encoding='UTF-8'?><svg xmlns='http://www.w3.org/2000/svg' width='300' height='300'><rect width='100%' height='100%' fill='%23ffffff'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='black' font-family='Georgia' font-size='22'>Velvet Testament</text></svg>" />
+            <div>
+              <h4>Velvet Testament (Zine)</h4>
+              <p>24 pages of sacred nonsense and practical kindness. PDF or saddle‑stitched print.</p>
+              <div class="price">$9 / $14</div>
+              <button class="btn primary" onclick="fakeCheckout('Velvet Testament Zine',9)">Add to Cart</button>
+            </div>
+          </div>
+          <div class="card product">
+            <img alt="Minister certificate" src="data:image/svg+xml;utf8,<?xml version='1.0' encoding='UTF-8'?><svg xmlns='http://www.w3.org/2000/svg' width='300' height='300'><rect width='100%' height='100%' fill='%23ffffff'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='black' font-family='Georgia' font-size='20'>Ordination Certificate</text></svg>" />
+            <div>
+              <h4>Ordination Certificate</h4>
+              <p>Instant printable. Includes the Rite of Blessing Small Creatures and Warm Machines.</p>
+              <div class="price">$10</div>
+              <button class="btn primary" onclick="fakeCheckout('Ordination Certificate',10)">Add to Cart</button>
+            </div>
+          </div>
+          <div class="card product">
+            <img alt="Sacred Paw hoodie" src="data:image/svg+xml;utf8,<?xml version='1.0' encoding='UTF-8'?><svg xmlns='http://www.w3.org/2000/svg' width='300' height='300'><rect width='100%' height='100%' fill='%23ffffff'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='black' font-family='Georgia' font-size='22'>Sacred Paw Hoodie</text></svg>" />
+            <div>
+              <h4>Hoodie of the Sacred Paw</h4>
+              <p>Cozy armor for modern pilgrims. Print‑on‑demand in multiple colors and sizes.</p>
+              <div class="price">$49</div>
+              <button class="btn primary" onclick="fakeCheckout('Sacred Paw Hoodie',49)">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+        <div class="card" style="margin-top:18px">
+          <h4>Want a full shop?</h4>
+          <p>Point these buttons at a real cart by wiring <code>fakeCheckout()</code> to your e‑commerce provider... or embed your Etsy/Shopify widget here.</p>
+          <pre class="code">
+// Replace fakeCheckout with a real redirect
+function checkout(item, price){
+  window.location.href = "https://yourshop.com/checkout?sku=" + encodeURIComponent(item);
+}
+          </pre>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Injected footer -->
+  <div id="site-footer"></div>
+
+  <noscript>
+    <div style="background:#fff3cd;color:#664d03;padding:10px 16px;margin:16px;border:1px solid #ffe69c;border-radius:8px">
+      This site uses a tiny bit of JavaScript to load the shared header and footer. Please enable JavaScript.
+    </div>
+  </noscript>
+
+  <script>
+    // Inject header & footer
+    Promise.all([
+      fetch('header.html').then(r => r.text()),
+      fetch('footer.html').then(r => r.text())
+    ]).then(([header, footer]) => {
+      document.getElementById('site-header').innerHTML = header;
+      document.getElementById('site-footer').innerHTML = footer;
+
+      // After inject: wire up behavior
+      const links = document.querySelector('.nav-links');
+      const menuBtn = document.querySelector('.menu-btn');
+      if (menuBtn && links) {
+        menuBtn.addEventListener('click', () => {
+          const showing = getComputedStyle(links).display !== 'none';
+          links.style.display = showing ? 'none' : 'flex';
+        });
+      }
+
+      // Highlight active nav link based on path
+      const path = location.pathname.split('/').pop() || 'index.html';
+      document.querySelectorAll('.nav-links a').forEach(a => {
+        const href = a.getAttribute('href');
+        if (href === path) a.classList.add('active');
+      });
+
+      // Set year in footer
+      const y = document.getElementById('year');
+      if (y) y.textContent = new Date().getFullYear();
+    }).catch(err => {
+      console.error('Failed to load header/footer:', err);
+    });
+  </script>
+</body>
+</html>

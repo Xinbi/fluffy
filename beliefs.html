@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Beliefs | The Church of Her Holy Fluff</title>
+  <meta name="description" content="Learn about the Church of Her Holy Fluff — a playful experiment in community, taking kindness seriously while laughing at ourselves." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600..900&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Injected header -->
+  <div id="site-header"></div>
+  
+  <main>
+	<section id="beliefs" class="reveal in">
+      <div class="container">
+        <h3 class="section-title">Core Beliefs</h3>
+        <p class="section-sub">Not carved in stone... more like stitched on a comfy blanket.</p>
+        <div class="grid cols-2">
+          <div class="card">
+            <h4>1) Kindness beats cleverness</h4>
+            <p>We prize being good over being right. Wit is welcome... cruelty is not.</p>
+          </div>
+          <div class="card">
+            <h4>2) Rest is righteous</h4>
+            <p>We honor naps, sabbaths, and the refusal to grind ourselves into dust.</p>
+          </div>
+          <div class="card">
+            <h4>3) Share the snacks</h4>
+            <p>Feasts are better when everyone eats. We run periodic food bank drives and “pantry tithe” weeks.</p>
+          </div>
+          <div class="card">
+            <h4>4) Curiosity over certainty</h4>
+            <p>Ask better questions... hold fewer grudges. Dogma is banned for being boring.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Injected footer -->
+  <div id="site-footer"></div>
+
+  <noscript>
+    <div style="background:#fff3cd;color:#664d03;padding:10px 16px;margin:16px;border:1px solid #ffe69c;border-radius:8px">
+      This site uses a tiny bit of JavaScript to load the shared header and footer. Please enable JavaScript.
+    </div>
+  </noscript>
+
+  <script>
+    // Inject header & footer
+    Promise.all([
+      fetch('header.html').then(r => r.text()),
+      fetch('footer.html').then(r => r.text())
+    ]).then(([header, footer]) => {
+      document.getElementById('site-header').innerHTML = header;
+      document.getElementById('site-footer').innerHTML = footer;
+
+      // After inject: wire up behavior
+      const links = document.querySelector('.nav-links');
+      const menuBtn = document.querySelector('.menu-btn');
+      if (menuBtn && links) {
+        menuBtn.addEventListener('click', () => {
+          const showing = getComputedStyle(links).display !== 'none';
+          links.style.display = showing ? 'none' : 'flex';
+        });
+      }
+
+      // Highlight active nav link based on path
+      const path = location.pathname.split('/').pop() || 'index.html';
+      document.querySelectorAll('.nav-links a').forEach(a => {
+        const href = a.getAttribute('href');
+        if (href === path) a.classList.add('active');
+      });
+
+      // Set year in footer
+      const y = document.getElementById('year');
+      if (y) y.textContent = new Date().getFullYear();
+    }).catch(err => {
+      console.error('Failed to load header/footer:', err);
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Join | The Church of Her Holy Fluff</title>
+  <meta name="description" content="Learn about the Church of Her Holy Fluff — a playful experiment in community, taking kindness seriously while laughing at ourselves." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600..900&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Injected header -->
+  <div id="site-header"></div>
+  
+  <main>
+<section id="join" class="reveal in">
+      <div class="container">
+        <h3 class="section-title">Join the Congregation</h3>
+        <p class="section-sub">Choose your path... instant ordination or slow‑burn membership. Both come with kindness homework.</p>
+        <div class="grid cols-2">
+          <div class="card">
+            <span class="badge">Ordination</span>
+            <h4>Minister of Fluff (instant)</h4>
+            <p>Get a printable certificate and a short rite you can perform for friends and pets. Suggested donation $10.</p>
+            <button class="btn primary" onclick="fakeCheckout('Ordination Certificate',10)">Get Ordained</button>
+          </div>
+          <div class="card">
+            <span class="badge">Membership</span>
+            <h4>High Fluff Council</h4>
+            <p>Monthly digital relics, early access to drops, and a private discord channel. $10/month... cancel anytime.</p>
+            <button class="btn ghost" onclick="fakeCheckout('Council Membership (Monthly)',10)">Join Council</button>
+          </div>
+        </div>
+        <div class="card" style="margin-top:18px">
+          <h4>Newsletter</h4>
+          <p class="section-sub">Announcements, micro‑rituals, and mildly unhinged theology. Zero spam.</p>
+          <form onsubmit="return subscribe(event)" aria-label="Newsletter form">
+            <label for="email">Email</label><br />
+            <input id="email" name="email" type="email" required placeholder="you@example.com" class="input" />
+            <button class="btn primary" type="submit">Subscribe</button>
+            <small class="muted">We only email for good reasons.</small>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Injected footer -->
+  <div id="site-footer"></div>
+
+  <noscript>
+    <div style="background:#fff3cd;color:#664d03;padding:10px 16px;margin:16px;border:1px solid #ffe69c;border-radius:8px">
+      This site uses a tiny bit of JavaScript to load the shared header and footer. Please enable JavaScript.
+    </div>
+  </noscript>
+
+  <script>
+    // Inject header & footer
+    Promise.all([
+      fetch('header.html').then(r => r.text()),
+      fetch('footer.html').then(r => r.text())
+    ]).then(([header, footer]) => {
+      document.getElementById('site-header').innerHTML = header;
+      document.getElementById('site-footer').innerHTML = footer;
+
+      // After inject: wire up behavior
+      const links = document.querySelector('.nav-links');
+      const menuBtn = document.querySelector('.menu-btn');
+      if (menuBtn && links) {
+        menuBtn.addEventListener('click', () => {
+          const showing = getComputedStyle(links).display !== 'none';
+          links.style.display = showing ? 'none' : 'flex';
+        });
+      }
+
+      // Highlight active nav link based on path
+      const path = location.pathname.split('/').pop() || 'index.html';
+      document.querySelectorAll('.nav-links a').forEach(a => {
+        const href = a.getAttribute('href');
+        if (href === path) a.classList.add('active');
+      });
+
+      // Set year in footer
+      const y = document.getElementById('year');
+      if (y) y.textContent = new Date().getFullYear();
+    }).catch(err => {
+      console.error('Failed to load header/footer:', err);
+    });
+  </script>
+</body>
+</html>
