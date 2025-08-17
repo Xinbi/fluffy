@@ -1,0 +1,13 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs
+/.vs/fluffy
+/.vs/fluffy/config
+/.vs/fluffy/config/applicationhost.config
+/.vs/fluffy/CopilotIndices/0.2.1634.3922
+/.vs/fluffy/FileContentIndex
+/.vs/fluffy/v17
+/.vs/slnx.sqlite
+/.vs/VSWorkspaceState.json

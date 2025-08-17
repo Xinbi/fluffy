@@ -11,136 +11,94 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <header>
-    <div class="container nav">
-      <div class="brand">
-        <!-- Inline logo: Sacred Paw within halo -->
-        <svg viewBox="0 0 64 64" aria-hidden="true" role="img">
-          <defs>
-            <!-- gold/silver halo -->
-            <radialGradient id="g" cx="50%" cy="50%">
-              <stop offset="0%" stop-color="#d4af37"/>
-              <stop offset="70%" stop-color="#c0c0c0" stop-opacity="0.65"/>
-              <stop offset="100%" stop-color="#c0c0c0" stop-opacity="0"/>
-            </radialGradient>
-          </defs>
-          <circle cx="32" cy="32" r="30" fill="url(#g)"/>
-          <circle cx="32" cy="32" r="22" fill="none" stroke="#d4af37" stroke-opacity=".6"/>
-          
-		  <g fill="#000">
-            <!-- Cross -->
-            <rect x="28" y="20" width="8" height="38"/>
-            <rect x="20" y="24" width="24" height="8"/>
-            <!-- Bunny head -->
-            <circle cx="32" cy="16" r="6"/>
-            <!-- Ears -->
-            <ellipse cx="26" cy="6" rx="3" ry="8"/>
-            <ellipse cx="38" cy="6" rx="3" ry="8"/>
-          </g>
-        </svg>
-        <h1>The Church of Her Holy Fluff</h1>
-      </div>
-		<nav class="nav-links" aria-label="Primary">
-		  <a href="about.html">About</a>
-		  <a href="beliefs.html">Beliefs</a>
-		  <a href="holy-days.html">Holy Days</a>
-		  <a href="join.html">Join</a>
-		  <a href="sermons.html">Sermons</a>
-		  <a href="shop.html" class="cta">Shop</a>
-		</nav>
-      <button class="menu-btn" aria-label="Toggle menu" onclick="toggleMenu()">☰</button>
-    </div>
-  </header>
+    <!-- Injected header -->
+    <div id="site-header"></div>
 
-  <main>
-    <section class="hero">
-       <div class="container">
-		<h2>In Service to the Fluffy Spirit</h2>
-		<p>
-		  We are a fellowship devoted to the gentle power of joy, the comfort of soft paws, and the art of becoming better humans. 
-		  The Velvet Testament calls us to weave compassion into the fabric of daily life, to share our blessings, and to honor the sacred rest. 
-		  All who seek warmth, kindness, and a place in the great tapestry are welcome here.  Halle-hop!
-		</p>
-        <div class="actions">
-          <a class="btn primary" href="#join">Get Ordained</a>
-          <a class="btn ghost" href="#shop">Browse Relics</a>
-        </div>
-      </div>
-    </section>
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h2>In Service to the Fluffy Spirit</h2>
+                <p>
+                    We are a fellowship devoted to the gentle power of joy, the comfort of soft paws, and the art of becoming better humans.
+                    The Velvet Testament calls us to weave compassion into the fabric of daily life, to share our blessings, and to honor the sacred rest.
+                    All who seek warmth, kindness, and a place in the great tapestry are welcome here.  Halle-hop!
+                </p>
+                <div class="actions">
+                    <a class="btn primary" href="#join">Get Ordained</a>
+                    <a class="btn ghost" href="#shop">Browse Relics</a>
+                </div>
+            </div>
+        </section>
 
-    <section id="faq" class="reveal">
-      <div class="container">
-        <h3 class="section-title">FAQ</h3>
-        <div class="grid cols-2">
-          <div class="card">
-            <h4>Is this a joke?</h4>
-            <p>Yes... and no. We’re joking with the trappings... not with the values. We take kindness seriously.</p>
-          </div>
-          <div class="card">
-            <h4>Do I need to believe anything?</h4>
-            <p>Believe in naps, snacks, and people. Debate theology if you want... just don’t be a jerk.</p>
-          </div>
-          <div class="card">
-            <h4>Where does money go?</h4>
-            <p>Hosting, print costs, and a monthly mutual‑aid fund posted publicly. When there’s profit... we share it.</p>
-          </div>
-          <div class="card">
-            <h4>Can I start a local chapter?</h4>
-            <p>Yes. Gather three friends, pick a coffee shop, and do one tangible good thing per month. Send photos.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
+        <section id="faq" class="reveal">
+            <div class="container">
+                <h3 class="section-title">FAQ</h3>
+                <div class="grid cols-2">
+                    <div class="card">
+                        <h4>Is this a joke?</h4>
+                        <p>Yes... and no. We’re joking with the trappings... not with the values. We take kindness seriously.</p>
+                    </div>
+                    <div class="card">
+                        <h4>Do I need to believe anything?</h4>
+                        <p>Believe in naps, snacks, and people. Debate theology if you want... just don’t be a jerk.</p>
+                    </div>
+                    <div class="card">
+                        <h4>Where does money go?</h4>
+                        <p>Hosting, print costs, and a monthly mutual‑aid fund posted publicly. When there’s profit... we share it.</p>
+                    </div>
+                    <div class="card">
+                        <h4>Can I start a local chapter?</h4>
+                        <p>Yes. Gather three friends, pick a coffee shop, and do one tangible good thing per month. Send photos.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 
-  <footer class="reveal">
-    <div class="container">
-      <div class="grid cols-3">
-        <div>
-          <strong>The Church of Her Holy Fluff</strong>
-          <p class="footnote">HolyFluff.org • A benevolent satire... a real community.</p>
-        </div>
-        <div>
-          <strong>Contact</strong>
-          <p>Email: <a href="mailto:abbess@holyfluff.org">abbess@holyfluff.org</a></p>
-          <p>Press: <a href="mailto:press@holyfluff.org">press@holyfluff.org</a></p>
-        </div>
-        <div>
-          <strong>Social</strong>
-          <p><a href="https://www.instagram.com/herholyfluffiness/">Instagram</a> • <a href="#">TikTok</a> • <a href="#">Discord</a></p>
-        </div>
-      </div>
-      <p class="copy">© <span id="year"></span> The Church of Her Holy Fluff. All naps reserved.</p>
-    </div>
-  </footer>
+    <!-- Injected footer -->
+    <div id="site-footer"></div>
 
-  <script>
-    // Mobile menu toggle
-    function toggleMenu(){
-      const links = document.querySelector('.nav-links');
-      if(!links) return;
-      const showing = getComputedStyle(links).display !== 'none';
-      links.style.display = showing ? 'none' : 'flex';
-    }
-    // Fake checkout to keep this single-file
-    function fakeCheckout(item, price){
-      alert('Pretend we added to cart: ' + item + ' ($' + price + ')');
-    }
-    // Newsletter subscribe
-    function subscribe(e){
-      e.preventDefault();
-      const email = document.getElementById('email').value.trim();
-      if(!email){ alert('Please enter an email.'); return false; }
-      // For now... use mailto. Replace with your provider later.
-      window.location.href = 'mailto:news@holyfluff.org?subject=' + encodeURIComponent('Subscribe') + '&body=' + encodeURIComponent('Please subscribe ' + email + ' to the newsletter.');
-      return false;
-    }
-    // Scroll reveal
-    const io = new IntersectionObserver((entries)=>{
-      entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} })
-    },{threshold:0.08});
-    document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+    <noscript>
+        <div style="background:#fff3cd;color:#664d03;padding:10px 16px;margin:16px;border:1px solid #ffe69c;border-radius:8px">
+            This site uses a tiny bit of JavaScript to load the shared header and footer. Please enable JavaScript.
+        </div>
+    </noscript>
+
+    <script>
+        // Inject header & footer
+        Promise.all([
+            fetch('header.html').then(r => r.text()),
+            fetch('footer.html').then(r => r.text())
+        ]).then(([header, footer]) => {
+            document.getElementById('site-header').innerHTML = header;
+            document.getElementById('site-footer').innerHTML = footer;
+        });
+            // Mobile menu toggle
+            function toggleMenu() {
+                const links = document.querySelector('.nav-links');
+                if (!links) return;
+                const showing = getComputedStyle(links).display !== 'none';
+                links.style.display = showing ? 'none' : 'flex';
+            }
+            // Fake checkout to keep this single-file
+            function fakeCheckout(item, price) {
+                alert('Pretend we added to cart: ' + item + ' ($' + price + ')');
+            }
+            // Newsletter subscribe
+            function subscribe(e) {
+                e.preventDefault();
+                const email = document.getElementById('email').value.trim();
+                if (!email) { alert('Please enter an email.'); return false; }
+                // For now... use mailto. Replace with your provider later.
+                window.location.href = 'mailto:news@holyfluff.org?subject=' + encodeURIComponent('Subscribe') + '&body=' + encodeURIComponent('Please subscribe ' + email + ' to the newsletter.');
+                return false;
+            }
+            // Scroll reveal
+            const io = new IntersectionObserver((entries) => {
+                entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } })
+            }, { threshold: 0.08 });
+            document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+            document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
 </body>
 </html>
