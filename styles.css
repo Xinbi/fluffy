@@ -187,3 +187,11 @@ footer{ padding:40px 0 70px; color:var(--muted) }
   .hero h2{ font-size:38px }
   .grid.cols-2,.grid.cols-3{ grid-template-columns:1fr }
 }
+
+.featured-photo {
+  width: 100%;
+  max-width: 900px;
+  border-radius: 18px;
+  margin-top: 16px;
+  box-shadow: var(--shadow);
+}
