@@ -64,41 +64,7 @@
         </div>
     </noscript>
 
-    <script>
-        // Inject header & footer
-        Promise.all([
-            fetch('header.html').then(r => r.text()),
-            fetch('footer.html').then(r => r.text())
-        ]).then(([header, footer]) => {
-            document.getElementById('site-header').innerHTML = header;
-            document.getElementById('site-footer').innerHTML = footer;
-        });
-            // Mobile menu toggle
-            function toggleMenu() {
-                const links = document.querySelector('.nav-links');
-                if (!links) return;
-                const showing = getComputedStyle(links).display !== 'none';
-                links.style.display = showing ? 'none' : 'flex';
-            }
-            // Fake checkout to keep this single-file
-            function fakeCheckout(item, price) {
-                alert('Pretend we added to cart: ' + item + ' ($' + price + ')');
-            }
-            // Newsletter subscribe
-            function subscribe(e) {
-                e.preventDefault();
-                const email = document.getElementById('email').value.trim();
-                if (!email) { alert('Please enter an email.'); return false; }
-                // For now... use mailto. Replace with your provider later.
-                window.location.href = 'mailto:news@holyfluff.org?subject=' + encodeURIComponent('Subscribe') + '&body=' + encodeURIComponent('Please subscribe ' + email + ' to the newsletter.');
-                return false;
-            }
-            // Scroll reveal
-            const io = new IntersectionObserver((entries) => {
-                entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } })
-            }, { threshold: 0.08 });
-            document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-            document.getElementById('year').textContent = new Date().getFullYear();
-    </script>
+    <script src="site.js"></script>
+
 </body>
 </html>
