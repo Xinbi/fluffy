@@ -1,5 +1,15 @@
 // site.js
 
+// Inject shared <head> elements
+fetch('head.html')
+  .then(r => r.text())
+  .then(headContent => {
+    document.head.insertAdjacentHTML('beforeend', headContent);
+    if (!document.title) {
+      document.title = "The Church of Her Holy Fluff";
+    }
+  });
+
 // Inject header & footer
 Promise.all([
   fetch('header.html').then(r => r.text()),
