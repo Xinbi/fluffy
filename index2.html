@@ -1,0 +1,152 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>The Church of Her Holy Fluff</title>
+  <meta name="description" content="Satirical but earnest community celebrating kindness, naps, and the sacred power of fluff. Welcome to HolyFluff.org." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Injected header -->
+  <div id="site-header"></div>
+
+  <main>
+    <section class="hero">
+       <div class="container">
+        <h2>In Service to the Fluffy Spirit</h2>
+        <p>
+          We are a fellowship devoted to the gentle power of joy, the comfort of soft paws, and the art of becoming better humans.
+          The Velvet Testament calls us to weave compassion into the fabric of daily life, to share our blessings, and to honor the sacred rest.
+          All who seek warmth, kindness, and a place in the great tapestry are welcome here. Halle-hop!
+        </p>
+        <div class="actions">
+          <a class="btn primary" href="join.html">Get Ordained</a>
+          <a class="btn ghost" href="shop.html">Browse Relics</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="reveal">
+      <div class="container">
+        <h3 class="section-title">Quick Links</h3>
+        <p class="section-sub">Explore the sacred nonsense.</p>
+        <div class="grid cols-3">
+          <div class="card">
+            <h4>🪶 Our Story</h4>
+            <p>How Lyria revealed the Velvet Dawn and touched the world with glitter.</p>
+            <a href="about.html">Read the FAQ</a>
+          </div>
+          <div class="card">
+            <h4>📜 Beliefs</h4>
+            <p>Kindness over cleverness. Snacks are sacred. Naps are holy.</p>
+            <a href="beliefs.html">See Our Beliefs</a>
+          </div>
+          <div class="card">
+            <h4>🎉 Holy Days</h4>
+            <p>Fluffmas, Glitterfall, and other mildly irreverent festivals of joy.</p>
+            <a href="holy-days.html">Explore Calendar</a>
+          </div>
+          <div class="card">
+            <h4>📖 Velvet Testament</h4>
+            <p>Collected teachings from the Fluffkeepers and Revered Hoppers.</p>
+            <a href="sermons.html">Read Teachings</a>
+          </div>
+          <div class="card">
+            <h4>🎓 Get Ordained</h4>
+            <p>Instant certificate, digital rites, and sacred small-creature blessings.</p>
+            <a href="join.html">Join the Congregation</a>
+          </div>
+          <div class="card">
+            <h4>🛍️ Relics & Relics</h4>
+            <p>Soft hoodies, sacred zines, and limited-edition sparkle kits.</p>
+            <a href="shop.html">Enter the Shop</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="reveal">
+      <div class="container">
+        <h3 class="section-title">From the Velvet Testament</h3>
+        <div class="grid cols-3">
+          <article class="card">
+            <h4>The Rite of the Warm Beverage</h4>
+            <p>Three minutes to breathe, sip, and notice the tiny ways you are safe. Liturgical mug optional.</p>
+            <a href="sermons.html">Read more</a>
+          </article>
+          <article class="card">
+            <h4>On the Ethics of Snacks</h4>
+            <p>Sharing food as sacred practice. First rule... take less than half. Second rule... bring something next time.</p>
+            <a href="sermons.html">Read more</a>
+          </article>
+          <article class="card">
+            <h4>Against Cruelty... For Mischief</h4>
+            <p>We reject meanness and embrace playful subversion. The world needs fewer edgelords and more gentle tricksters.</p>
+            <a href="sermons.html">Read more</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq" class="reveal">
+      <div class="container">
+        <h3 class="section-title">FAQ</h3>
+        <div class="grid cols-2">
+          <div class="card">
+            <h4>Is this a joke?</h4>
+            <p>Yes... and no. We’re joking with the trappings... not with the values. We take kindness seriously.</p>
+          </div>
+          <div class="card">
+            <h4>Do I need to believe anything?</h4>
+            <p>Believe in naps, snacks, and people. Debate theology if you want... just don’t be a jerk.</p>
+          </div>
+          <div class="card">
+            <h4>Where does money go?</h4>
+            <p>Hosting, print costs, and a monthly mutual‑aid fund posted publicly. When there’s profit... we share it.</p>
+          </div>
+          <div class="card">
+            <h4>Can I start a local chapter?</h4>
+            <p>Yes. Gather three friends, pick a coffee shop, and do one tangible good thing per month. Send photos.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Injected footer -->
+  <div id="site-footer"></div>
+
+  <script>
+    // Inject header & footer
+    Promise.all([
+      fetch('header.html').then(r => r.text()),
+      fetch('footer.html').then(r => r.text())
+    ]).then(([header, footer]) => {
+      document.getElementById('site-header').innerHTML = header;
+      document.getElementById('site-footer').innerHTML = footer;
+
+      const links = document.querySelector('.nav-links');
+      const menuBtn = document.querySelector('.menu-btn');
+      if (menuBtn && links) {
+        menuBtn.addEventListener('click', () => {
+          const showing = getComputedStyle(links).display !== 'none';
+          links.style.display = showing ? 'none' : 'flex';
+        });
+      }
+
+      const path = location.pathname.split('/').pop() || 'index.html';
+      document.querySelectorAll('.nav-links a').forEach(a => {
+        const href = a.getAttribute('href');
+        if (href === path) a.classList.add('active');
+      });
+
+      const y = document.getElementById('year');
+      if (y) y.textContent = new Date().getFullYear();
+    }).catch(err => {
+      console.error('Failed to load header/footer:', err);
+    });
+  </script>
+</body>
+</html>
