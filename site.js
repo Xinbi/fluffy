@@ -38,3 +38,27 @@ Promise.all([
 }).catch(err => {
   console.error('Failed to load header/footer:', err);
 });
+
+(function(){
+function setEnabled(on){
+  const cert = document.getElementById('btnCert');
+  const donate = document.getElementById('btnDonate');
+  [cert, donate].forEach(a=>{
+	if(!a) return;
+	if(on){
+	  a.removeAttribute('aria-disabled');
+	  a.classList.remove('is-disabled');
+	  a.style.pointerEvents = '';
+	  a.style.opacity = '';
+	} else {
+	  a.setAttribute('aria-disabled', 'true');
+	  a.classList.add('is-disabled');
+	  a.style.pointerEvents = 'none';
+	  a.style.opacity = '0.6';
+	}
+  });
+}
+setEnabled(false);
+const box = document.getElementById('chkDone');
+box && box.addEventListener('change', ()=> setEnabled(box.checked));
+})();

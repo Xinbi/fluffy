@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <div data-include="head.html"></div>
+    <title>Ordination Rite | Church of Her Holy Fluff</title>
+	<link rel="stylesheet" href="styles.css" />
+	<script src="site.js" defer></script>
+  </head>
+<body class="page page-ordination">
+  <!-- Injected header -->
+  <div id="site-header"></div>
+
+  <main class="container section rite-wrap stack-lg">
+    <h1>Rite of the Velvet Dawn</h1>
+    <p class="lead muted">A short, earnest rite. No gatekeeping. No guilt. Just joy, consent, and kindness.</p>
+
+    <section class="rite-card stack">
+      <h2>The Short Rite</h2>
+      <div class="callout">
+        <p><strong>You’ll need:</strong> a quiet moment, a glass of water (holy hydration), bunny ears, and a jelly bean sacrement.</p>
+      </div>
+
+      <div class="rite-steps">
+        <ol class="stack">
+          <li><strong>Centering.</strong> Take three slow breaths. Sip the water. Picture a soft golden light above your head, edged with silver and partake of the jelly bean sacrement</li>
+          <li><strong>Invocation.</strong> Say: <em>“By the Velvet Dawn and the Joy that spins within all things, I welcome Fluff, I choose kindness, and I honor consent.”</em></li>
+          <li><strong>Gesture.</strong> Place your hand over your heart and make a small twirl (literal or figurative). Let yourself smile.</li>
+          <li><strong>Vow.</strong> Say: <em>“I pledge to practice joy, respect boundaries, and spread gentle absurdity wherever I go.”</em></li>
+          <li><strong>Seal.</strong> Trace a small bunny-cross over your heart (ears optional) and say: <em>“May my spirit twirl freely. Halle-hop.”</em></li>
+        </ol>
+      </div>
+
+      <label class="agree">
+        <input type="checkbox" id="chkDone" /> I have performed the Rite of the Velvet Dawn.
+      </label>
+
+      <div class="actions">
+        <a id="btnCert" class="btn primary" href="/assets/ordination-certificate.pdf" download disabled>Download Certificate (PDF)</a>
+        <a id="btnDonate" class="btn accent" href="https://paypal.me/holyfluffchurch?country.x=US&locale.x=en_US" target="_blank" rel="noopener" disabled>Make a Donation</a>
+        <a class="btn ghost" href="/join.html">Back to Join</a>
+      </div>
+      <p class="seal">Your ordination is valid the moment you complete the rite. The certificate is ceremonial (and looks great on a fridge).</p>
+    </section>
+  </main>
+
+  <!-- Injected footer -->
+  <div id="site-footer"></div>
+
+  <noscript>
+    <div style="background:#fff3cd;color:#664d03;padding:10px 16px;margin:16px;border:1px solid #ffe69c;border-radius:8px">
+      This site uses a tiny bit of JavaScript to load the shared header and footer. Please enable JavaScript.
+    </div>
+  </noscript>
+    <script>
+      // Page-specific: enable certificate/donate after the rite is confirmed
+      (function(){
+        function setEnabled(on){
+          const cert = document.getElementById('btnCert');
+          const donate = document.getElementById('btnDonate');
+          [cert, donate].forEach(a=>{
+            if(!a) return;
+            if(on){
+              a.removeAttribute('aria-disabled');
+              a.classList.remove('is-disabled');
+              a.style.pointerEvents = '';
+              a.style.opacity = '';
+            } else {
+              a.setAttribute('aria-disabled', 'true');
+              a.classList.add('is-disabled');
+              a.style.pointerEvents = 'none';
+              a.style.opacity = '0.6';
+            }
+          });
+        }
+        setEnabled(false);
+        const box = document.getElementById('chkDone');
+        box && box.addEventListener('change', ()=> setEnabled(box.checked));
+      })();
+    </script>
+  </body>
+</html>
